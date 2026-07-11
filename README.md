@@ -1,558 +1,429 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Shivansh Awasthi — Student & Developer</title>
-
-  <style>
-    *,
-    *::before,
-    *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    :root {
-      --purple-light: #EEEDFE;
-      --purple-mid: #7F77DD;
-      --purple-dark: #3C3489;
-      --pink-light: #FBEAF0;
-      --pink-mid: #D4537E;
-      --pink-dark: #72243E;
-      --teal-light: #E1F5EE;
-      --teal-mid: #1D9E75;
-      --teal-dark: #085041;
-      --amber-mid: #BA7517;
-      --blue-mid: #378ADD;
-      --text-primary: #1a1a1a;
-      --text-secondary: #555;
-      --text-tertiary: #999;
-      --bg-primary: #ffffff;
-      --bg-secondary: #f7f7f5;
-      --border: rgba(0, 0, 0, 0.1);
-      --radius-md: 8px;
-      --radius-lg: 12px;
-    }
-
-    @media (prefers-color-scheme: dark) {
-      :root {
-        --text-primary: #f0f0ee;
-        --text-secondary: #aaa;
-        --text-tertiary: #666;
-        --bg-primary: #1a1a18;
-        --bg-secondary: #222220;
-        --border: rgba(255, 255, 255, 0.1);
-        --purple-light: #26215C;
-        --pink-light: #4B1528;
-        --teal-light: #04342C;
-      }
-    }
-
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      color: var(--text-primary);
-      background: var(--bg-primary);
-      line-height: 1.7;
-      max-width: 760px;
-      margin: 0 auto;
-    }
-
-    /* NAV */
-    nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem 2rem;
-      border-bottom: 0.5px solid var(--border);
-      position: sticky;
-      top: 0;
-      background: var(--bg-primary);
-      z-index: 10;
-    }
-
-    .nav-logo {
-      font-size: 18px;
-      font-weight: 600;
-      color: var(--purple-mid);
-      text-decoration: none;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 1.5rem;
-      list-style: none;
-    }
-
-    .nav-links a {
-      font-size: 14px;
-      color: var(--text-secondary);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-
-    .nav-links a:hover {
-      color: var(--purple-mid);
-    }
-
-    /* HERO */
-    .hero {
-      padding: 4rem 2rem 3rem;
-      display: flex;
-      align-items: center;
-      gap: 2.5rem;
-      border-bottom: 0.5px solid var(--border);
-    }
-
-    .avatar {
-      width: 90px;
-      height: 90px;
-      border-radius: 50%;
-      background: var(--purple-light);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 28px;
-      font-weight: 600;
-      color: var(--purple-dark);
-      flex-shrink: 0;
-      border: 2px solid var(--purple-mid);
-    }
-
-    .hero h1 {
-      font-size: 28px;
-      font-weight: 600;
-      margin-bottom: 6px;
-    }
-
-    .hero .subtitle {
-      font-size: 15px;
-      color: var(--text-secondary);
-      margin-bottom: 14px;
-    }
-
-    .tags {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-    }
-
-    .tag {
-      font-size: 12px;
-      padding: 4px 10px;
-      border-radius: var(--radius-md);
-      font-weight: 500;
-    }
-
-    .tag-purple {
-      background: var(--purple-light);
-      color: var(--purple-dark);
-    }
-
-    .tag-pink {
-      background: var(--pink-light);
-      color: var(--pink-dark);
-    }
-
-    .tag-teal {
-      background: var(--teal-light);
-      color: var(--teal-dark);
-    }
-
-    /* SECTIONS */
-    section {
-      padding: 2.5rem 2rem;
-      border-bottom: 0.5px solid var(--border);
-    }
-
-    .section-label {
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--text-tertiary);
-      margin-bottom: 1.5rem;
-    }
-
-    /* ABOUT */
-    .about-text {
-      font-size: 15px;
-      line-height: 1.9;
-      color: var(--text-secondary);
-      max-width: 560px;
-    }
-
-    /* SKILLS */
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-      gap: 10px;
-    }
-
-    .skill-card {
-      background: var(--bg-secondary);
-      border-radius: var(--radius-lg);
-      padding: 14px 16px;
-      border: 0.5px solid var(--border);
-    }
-
-    .skill-cat {
-      font-size: 11px;
-      font-weight: 600;
-      color: var(--text-tertiary);
-      margin-bottom: 10px;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-
-    .skill-list {
-      display: flex;
-      flex-direction: column;
-      gap: 7px;
-    }
-
-    .skill-item {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 13px;
-    }
-
-    .dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      flex-shrink: 0;
-    }
-
-    .dot-purple {
-      background: var(--purple-mid);
-    }
-
-    .dot-pink {
-      background: var(--pink-mid);
-    }
-
-    .dot-teal {
-      background: var(--teal-mid);
-    }
-
-    .dot-amber {
-      background: var(--amber-mid);
-    }
-
-
-    /* CERTIFICATES */
-    .cert-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 12px;
-    }
-
-    .cert-card {
-      border-radius: var(--radius-lg);
-      border: 0.5px solid var(--border);
-      padding: 18px 16px 14px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      text-decoration: none;
-      color: var(--text-primary);
-      transition: transform 0.15s, box-shadow 0.15s;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .cert-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 4px;
-    }
-
-    .cert-card:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
-    }
-
-    .cert-card-purple {
-      background: var(--purple-light);
-    }
-
-    .cert-card-purple::before {
-      background: var(--purple-mid);
-    }
-
-    .cert-card-pink {
-      background: var(--pink-light);
-    }
-
-    .cert-card-pink::before {
-      background: var(--pink-mid);
-    }
-
-    .cert-card-teal {
-      background: var(--teal-light);
-    }
-
-    .cert-card-teal::before {
-      background: var(--teal-mid);
-    }
-
-    .cert-emoji {
-      font-size: 26px;
-    }
-
-    .cert-title {
-      font-size: 14px;
-      font-weight: 600;
-    }
-
-    .cert-meta {
-      font-size: 12px;
-      color: var(--text-tertiary);
-    }
-
-    .cert-dl {
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      font-size: 12px;
-      font-weight: 600;
-      margin-top: 2px;
-    }
-
-    .cert-dl-purple {
-      color: var(--purple-dark);
-    }
-
-    .cert-dl-pink {
-      color: var(--pink-dark);
-    }
-
-    .cert-dl-teal {
-      color: var(--teal-dark);
-    }
-
-    /* CONTACT */
-    .contact-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-      max-width: 420px;
-    }
-
-    .contact-btn {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 12px 16px;
-      border-radius: var(--radius-lg);
-      border: 0.5px solid var(--border);
-      background: var(--bg-primary);
-      font-size: 14px;
-      color: var(--text-primary);
-      cursor: pointer;
-      text-decoration: none;
-      transition: background 0.15s;
-    }
-
-    .contact-btn:hover {
-      background: var(--bg-secondary);
-    }
-
-    .contact-btn svg {
-      flex-shrink: 0;
-    }
-
-    /* FOOTER */
-    footer {
-      padding: 1.5rem 2rem;
-      text-align: center;
-      font-size: 13px;
-      color: var(--text-tertiary);
-    }
-
-    /* RESPONSIVE */
-    @media (max-width: 540px) {
-      .hero {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 1.2rem;
-        padding: 2.5rem 1.25rem 2rem;
-      }
-
-      section {
-        padding: 2rem 1.25rem;
-      }
-
-      nav {
-        padding: 0.875rem 1.25rem;
-      }
-
-      .contact-grid {
-        grid-template-columns: 1fr;
-      }
-
-      h1 {
-        font-size: 22px !important;
-      }
-    }
-  </style>
-</head>
-
-<body>
-
-  <!-- <form action="https://api.web3forms.com/submit" method="POST">
-  <input type="hidden" name="access_key" value="db15a8bc-bfc8-43ef-a236-2aba75cff34f">
-  <input type="text" name="name" required>
-  <input type="email" name="email" required>
-  <textarea name="message" required></textarea>
-  <button type="submit">Submit Form</button>
-</form> -->
-
-  <nav>
-    <!-- <a class="nav-logo" href="shivansh logo previw" style="display:flex;align-items:center;gap:10px;text-decoration:none;"></a> -->
-    <a class="nav-logo" href="shivansh_logo_preview.png">Shivansh ✦</a>
-    <ul class="nav-links">
-      <li><a href="#about">about</a></li>
-      <li><a href="#skills">skills</a></li>
-      <!-- <li><a href="#certificates">certificates</a></li>
-      <li><a href="#certificates">certificates</a></li> -->
-      <li><a href="#contact">contact</a></li>
-    </ul>
-  </nav>
-
-  <div class="hero">
-    <div class="avatar">SA</div>
-    <div>
-      <h1>Hey, I'm Shivansh Awasthi 👋</h1>
-      <p class="subtitle">· Web Developer · Cybersecurity enthusiast</p>
-      <div class="tags">
-        <span class="tag tag-purple">🎓 Student · Kanpur</span>
-        <span class="tag tag-pink">🔐 Exploring Cybersecurity</span>
-        <span class="tag tag-teal">🚀 Open to internships</span>
-      </div>
+# 📱 Shivansh Awasthi - Portfolio Website
+
+> एक आधुनिक, साफ और पूरी तरह responsive personal portfolio website जो HTML5 और CSS3 से बना है।
+
+---
+
+## 🎯 Project Overview
+
+यह एक beautiful portfolio website है **Shivansh Awasthi** के लिए जो उनकी web development और cybersecurity skills को showcase करती है।
+
+### ✨ Key Features:
+- ✅ **No JavaScript** - Pure HTML & CSS (कोई external library नहीं)
+- 📱 **Fully Responsive** - Mobile, Tablet, Desktop सब पर काम करता है
+- 🌓 **Dark Mode Support** - System preference के अनुसार automatically switch होता है
+- ⚡ **Lightning Fast** - Performance optimized
+- 🎨 **Modern Design** - Clean और professional look
+- 🔒 **Secure** - कोई sensitive data नहीं, सब safe है
+
+---
+
+## 🚀 Quick Start - File कैसे खोलें
+
+### Option 1: सीधे Browser में खोलें (सबसे आसान)
+```
+बस फाइल को double-click करो:
+shivansh_awasthi.html
+```
+
+### Option 2: Python से Local Server पर चलाएं (Recommended)
+
+**Python 3 के साथ:**
+```bash
+python -m http.server 8000
+# फिर खोलो: http://localhost:8000/shivansh_awasthi.html
+```
+
+**Python 2 के साथ:**
+```bash
+python -m SimpleHTTPServer 8000
+```
+
+**Node.js के साथ:**
+```bash
+npx http-server
+```
+
+---
+
+## 📂 Website का Structure
+
+```
+📄 shivansh_awasthi.html
+├── 🧭 Navigation Bar (Sticky)
+│   ├── Logo: "Shivansh ✦"
+│   └── Links: About, Skills, Contact
+│
+├── 🎯 Hero Section
+│   ├── Avatar (SA initials)
+│   ├── Name: "Hey, I'm Shivansh Awasthi 👋"
+│   ├── Subtitle: "Web Developer · Cybersecurity enthusiast"
+│   └── Quick Tags (Status badges)
+│
+├── 📝 About Section
+│   └── Professional Bio (web development और cybersecurity के बारे में)
+│
+├── 🛠️ Skills Section
+│   ├── Web Development
+│   │   ├── HTML
+│   │   ├── CSS
+│   │   └── Responsive Design
+│   ├── Cybersecurity
+│   │   └── Ethical Hacking
+│   └── Tools & Interests
+│       ├── VS Code
+│       └── Open Source
+│
+├── 💬 Contact Section
+│   ├── Phone Button: +91 7905191774
+│   └── Email Button
+│
+└── 📄 Footer
+    └── Copyright
+```
+
+---
+
+## 🎨 Design System
+
+### Color Palette
+
+| Color | Hex Code | कहाँ use होता है |
+|-------|----------|-----------------|
+| Purple (Main) | `#7F77DD` | Branding, hover states |
+| Purple Light | `#EEEDFE` | Backgrounds |
+| Purple Dark | `#3C3489` | Dark text |
+| Pink (Web) | `#D4537E` | Web development |
+| Pink Light | `#FBEAF0` | Skill backgrounds |
+| Teal (Security) | `#1D9E75` | Cybersecurity, Contact |
+| Teal Light | `#E1F5EE` | Accent backgrounds |
+| Amber (Tools) | `#BA7517` | Tools & interests |
+
+### Dark Mode 🌓
+जब user के device पर Dark Mode enable है, तो colors automatically adjust हो जाते हैं:
+- Text: Light color (#f0f0ee)
+- Background: Dark color (#1a1a18)
+
+### Responsive Breakpoints 📱
+
+| Device | Width | Layout |
+|--------|-------|--------|
+| **Mobile** | < 540px | Single column, stacked |
+| **Tablet** | 540-1024px | 2-3 columns |
+| **Desktop** | > 1024px | Full layout (max 760px width) |
+
+---
+
+## ✏️ How to Customize/Edit करें
+
+### 1️⃣ अपना नाम और Info बदलें
+
+**Heading बदलें (Line 433-434):**
+```html
+<h1>Hey, I'm Shivansh Awasthi 👋</h1>
+<p class="subtitle">· Web Developer · Cybersecurity enthusiast</p>
+```
+
+**Status Tags update करें (Lines 436-438):**
+```html
+<span class="tag tag-purple">🎓 Student · Kanpur</span>
+<span class="tag tag-pink">🔐 Exploring Cybersecurity</span>
+<span class="tag tag-teal">🚀 Open to internships</span>
+```
+
+### 2️⃣ About Section बदलें
+
+```html
+<!-- Line 445-450 -->
+<p class="about-text">
+  यहाँ अपना bio लिखो...
+</p>
+```
+
+### 3️⃣ Skills Add/Remove करें
+
+**नया skill add करने के लिए:**
+```html
+<div class="skill-card">
+  <div class="skill-cat">Category Name</div>
+  <div class="skill-list">
+    <div class="skill-item">
+      <span class="dot dot-purple"></span>Skill Name
     </div>
   </div>
+</div>
+```
 
-  <section id="about">
-    <div class="section-label">about me</div>
-    <p class="about-text">
-      I'm Shivansh Awasthi, its my passion for web development
-      and cybersecurity. I love building things for the web using HTML and CSS.
-      and I'm always curious about how systems can be secured and made more resilient. When I'm not
-      coding, you'll probably find me exploring new tools, reading about ethical hacking, or thinkering
-      with a new side project.
-    </p>
-  </section>
+**Dot Colors (choose कर सकते हो):**
+- `dot-purple` - Purple dot
+- `dot-pink` - Pink dot
+- `dot-teal` - Teal dot
+- `dot-amber` - Amber dot
 
-  <section id="skills">
-    <div class="section-label">skills</div>
-    <div class="skills-grid">
+### 4️⃣ Contact Info Update करें
 
-      <div class="skill-card">
-        <div class="skill-cat">Web</div>
-        <div class="skill-list">
-          <div class="skill-item"><span class="dot dot-pink"></span>HTML</div>
-          <div class="skill-item"><span class="dot dot-pink"></span>CSS</div>
-          <div class="skill-item"><span class="dot dot-pink"></span>Responsive Design</div>
-        </div>
-      </div>
+**Phone Number (Line 527):**
+```html
+<a class="contact-btn" href="tel:+917905191774">
+  +91 7905191774
+</a>
+```
 
-      <div class="skill-card">
-        <div class="skill-cat">Cybersecurity</div>
-        <div class="skill-list">
-          <div class="skill-item"><span class="dot dot-teal"></span>Ethical Hacking</div>
-        </div>
-      </div>
+**Email (Line 536):**
+```html
+<a class="contact-btn" href="mailto:your-email@gmail.com">
+  Email me
+</a>
+```
 
-      <div class="skill-card">
-        <div class="skill-cat">Tools & Interests</div>
-        <div class="skill-list">
-          <div class="skill-item"><span class="dot dot-amber"></span>VS Code</div>
-          <div class="skill-item"><span class="dot dot-amber"></span>Open Source</div>
-        </div>
-      </div>
+⚠️ **Important:** Email में typo fix करो - `shivanshawasthi51@gmailcom` → `shivanshawasthi51@gmail.com`
 
-    </div>
-  </section>
+### 5️⃣ Colors Customize करें
 
-  <!-- <section id="certificates">
-    <div class="section-label">certificates</div>
-    <div class="cert-grid">
+CSS variables को edit करो (Line 18-38):
+```css
+:root {
+  --purple-mid: #7F77DD;    /* अपना color डालो */
+  --pink-mid: #D4537E;
+  --teal-mid: #1D9E75;
+  /* और भी colors... */
+}
+```
 
-      <a class="cert-card cert-card-purple" href="Certificate_Python.pdf" download>
-        <div class="cert-emoji">🐍</div>
-        <div class="cert-title">Python Programming</div>
-        <div class="cert-meta">Academy of Excellence · June 2026</div>
-        <span class="cert-dl cert-dl-purple">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-          Download Certificate
-        </span>
-      </a> -->
+### 6️⃣ Font बदलें
 
-  <!-- <a class="cert-card cert-card-teal" href="Certificate_Java.pdf" download>
-        <div class="cert-emoji">☕</div>
-        <div class="cert-title">Java Programming</div>
-        <div class="cert-meta">Academy of Excellence · June 2026</div>
-        <span class="cert-dl cert-dl-teal">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-          Download Certificate
-        </span>
-      </a> -->
+```css
+body {
+  font-family: 'अपना font name';
+  /* Current: -apple-system, BlinkMacSystemFont, 'Segoe UI' */
+}
+```
 
-  <!-- </div>
-  </section> -->
+### 7️⃣ Layout Width Adjust करें
 
-  <section id="contact">
-    <div class="section-label">say hello</div>
-    <div class="contact-grid">
+```css
+body {
+  max-width: 760px;  /* यह value बदलो */
+  margin: 0 auto;
+}
+```
 
-      <a class="contact-btn" href="tel:+917905191774">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="1.8"
-          stroke-linecap="round" stroke-linejoin="round">
-          <path
-            d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.64 3.38 2 2 0 0 1 3.62 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.6a16 16 0 0 0 6.29 6.29l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
-        </svg>
-        +91 7905191774
-      </a>
+---
 
-      <a class="contact-btn" href="mailto:shivanshawasthi51@gmailcom">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#7F77DD" stroke-width="1.8"
-          stroke-linecap="round" stroke-linejoin="round">
-          <rect x="2" y="4" width="20" height="16" rx="2" />
-          <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
-        </svg>
-        Email me
-      </a>
+## 🔓 Hidden Features को Enable करें
 
-      <!-- <a class="contact-btn" href="https://linkedin.com/in/yourname" target="_blank" rel="noopener">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#378ADD" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-        LinkedIn
-      </a> -->
+### ✅ Certificates Section Enable करें
 
-      <!-- <a class="contact-btn" href="https://github.com/yourname" target="_blank" rel="noopener">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D4537E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
-        GitHub
-      </a>
+अगर certificates add करना हैं तो lines 496-521 को uncomment करो
 
-      <a class="contact-btn" href="https://twitter.com/yourname" target="_blank" rel="noopener">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/></svg>
-        Twitter
-      </a> -->
+### ✅ Social Media Links Enable करें
 
-    </div>
-  </section>
+LinkedIn, GitHub, Twitter buttons के लिए lines 545-558 को uncomment करो:
+```html
+<a class="contact-btn" href="https://linkedin.com/in/yourname">LinkedIn</a>
+<a class="contact-btn" href="https://github.com/yourname">GitHub</a>
+<a class="contact-btn" href="https://twitter.com/yourname">Twitter</a>
+```
 
-  <footer>
-    built with ♥ · Shivansh Awasthi · 2026
-  </footer>
+---
 
-</body>
+## 📱 Browser Support
 
-</html>
+| Browser | Status |
+|---------|--------|
+| Chrome | ✅ Full Support |
+| Firefox | ✅ Full Support |
+| Safari | ✅ Full Support |
+| Edge | ✅ Full Support |
+| Opera | ✅ Full Support |
+| IE 11 | ⚠️ Partial (CSS Variables काम नहीं करते) |
+
+---
+
+## 🐛 Troubleshooting - Common Issues
+
+### ❌ Issue: Colors सही नहीं दिख रहे
+**Solution:** Browser cache clear करो
+- **Windows:** Ctrl + Shift + Delete
+- **Mac:** Cmd + Shift + Delete
+- या: Ctrl + Shift + R (या Cmd + Shift + R)
+
+### ❌ Issue: Email link काम नहीं कर रहा
+**Solution:** Email format सही करो
+```html
+<a href="mailto:email@example.com">Email</a>
+```
+
+### ❌ Issue: Mobile पर responsive नहीं है
+**Solution:** यह meta tag check करो (होना चाहिए `<head>` में):
+```html
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+```
+
+### ❌ Issue: Dark mode काम नहीं कर रहा
+**Solution:** अपने device का dark mode check करो:
+- **Windows:** Settings > Personalization > Colors > Dark
+- **Mac:** System Preferences > General > Appearance > Dark
+
+### ❌ Issue: Phone link काम नहीं कर रहा
+**Solution:** सही format use करो:
+```html
+<a href="tel:+917905191774">Call me</a>
+```
+
+---
+
+## 🎯 File की Details
+
+| Detail | Value |
+|--------|-------|
+| **File Type** | HTML5 |
+| **Encoding** | UTF-8 |
+| **Size** | ~16KB |
+| **Lines** | 569 |
+| **External Dependencies** | None |
+| **JavaScript** | Required नहीं |
+| **Frameworks** | कोई नहीं |
+
+---
+
+## 📊 CSS Classes - Quick Reference
+
+### Navigation
+- `.nav-logo` - Logo text
+- `.nav-links` - Navigation links container
+
+### Hero Section
+- `.hero` - Main hero container
+- `.avatar` - Profile avatar circle
+- `.tag-purple`, `.tag-pink`, `.tag-teal` - Tag variants
+
+### Skills
+- `.skills-grid` - Grid container
+- `.skill-card` - Individual skill card
+- `.skill-item` - Individual skill
+- `.dot-purple`, `.dot-pink`, `.dot-teal`, `.dot-amber` - Colored dots
+
+### Contact
+- `.contact-btn` - Contact button
+
+---
+
+## ✅ Best Practices
+
+### करो ✅
+- ✅ Real profile photo use करो
+- ✅ Multiple devices पर test करो
+- ✅ Contact info सही रखो
+- ✅ Links को test करो deployment से पहले
+- ✅ Dark mode को check करो
+- ✅ Mobile view को test करो
+
+### मत करो ❌
+- ❌ Heavy external libraries add मत करो
+- ❌ Inline styles बार-बार मत लिखो
+- ❌ Placeholder info छोड़ मत दो
+- ❌ Broken links मत रखो
+- ❌ Outdated information मत रखो
+
+---
+
+## 🚀 Deploy करने के तरीके
+
+### GitHub Pages
+1. GitHub account बनाओ
+2. Repository: `username.github.io`
+3. `index.html` upload करो
+4. Visit: `username.github.io`
+
+### Netlify
+1. Netlify.com पर जाओ
+2. Folder drag & drop करो
+3. Auto-deploy हो जाएगा
+
+### Vercel
+1. Vercel.com पर जाओ
+2. GitHub repository connect करो
+3. Auto-deploy on push
+
+---
+
+## 👤 Profile Information
+
+| Info | Value |
+|------|-------|
+| **Name** | Shivansh Awasthi |
+| **Location** | Kanpur |
+| **Status** | Student |
+| **Focus** | Web Development, Cybersecurity |
+| **Phone** | +91 7905191774 |
+| **Email** | shivanshawasthi51@gmail.com |
+| **Open to** | Internships |
+
+---
+
+## 💻 Skills Summary
+
+### Web Development 🌐
+- HTML5
+- CSS3 (Modern + Responsive)
+- Responsive Web Design
+
+### Cybersecurity 🔐
+- Ethical Hacking
+
+### Tools 🛠️
+- VS Code
+- Open Source
+
+---
+
+## 🔐 Security
+
+- ✅ कोई sensitive data नहीं
+- ✅ कोई database नहीं
+- ✅ Static content only
+- ✅ Public deploy करने के लिए safe है
+
+---
+
+## 💡 Future Enhancement Ideas
+
+- [ ] Contact form add करो
+- [ ] Projects section add करो
+- [ ] Blog/Articles section
+- [ ] Experience timeline
+- [ ] Testimonials section
+- [ ] Resume download button
+- [ ] Scroll animations
+- [ ] Social media links
+
+---
+
+## 📞 Contact
+
+- **Phone:** +91 7905191774
+- **Email:** shivanshawasthi51@gmail.com
+- **Location:** Kanpur, India
+
+---
+
+## 📄 License
+
+यह एक personal portfolio है। अपना portfolio बनाने के लिए इसे template के रूप में use कर सकते हो!
+
+---
+
+## 📝 Version History
+
+| Version | Date | Changes |
+|---------|------|---------|
+| 1.0 | 2026 | Initial Release |
+| 1.1 | 2026 | Fixed HTML structure & Skills section |
+
+---
+
+**Last Updated:** 2026  
+**Built with ♥ by Shivansh Awasthi**
+
+✨ Happy customizing! ✨
