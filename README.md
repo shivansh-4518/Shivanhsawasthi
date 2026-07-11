@@ -1,168 +1,571 @@
-[README (1).md](https://github.com/user-attachments/files/29912795/README.1.md)
-# Shivansh Awasthi — Portfolio Website
+[shivansh awasthi.html](https://github.com/user-attachments/files/29912897/shivansh.awasthi.html)
 
-A modern, responsive personal portfolio website showcasing web development skills and cybersecurity interests.
+<!DOCTYPE html>
+<html lang="en">
 
-## 📋 Overview
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shivansh Awasthi — Student & Developer</title>
 
-This is a sleek, single-page portfolio website built with HTML and CSS. The site presents Shivansh Awasthi's professional profile, skills, and contact information with a clean, modern design.
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-### Key Features
+    :root {
+      --purple-light: #EEEDFE;
+      --purple-mid: #7F77DD;
+      --purple-dark: #3C3489;
+      --pink-light: #FBEAF0;
+      --pink-mid: #D4537E;
+      --pink-dark: #72243E;
+      --teal-light: #E1F5EE;
+      --teal-mid: #1D9E75;
+      --teal-dark: #085041;
+      --amber-mid: #BA7517;
+      --blue-mid: #378ADD;
+      --text-primary: #1a1a1a;
+      --text-secondary: #555;
+      --text-tertiary: #999;
+      --bg-primary: #ffffff;
+      --bg-secondary: #f7f7f5;
+      --border: rgba(0, 0, 0, 0.1);
+      --radius-md: 8px;
+      --radius-lg: 12px;
+    }
 
-- **Responsive Design**: Adapts beautifully to mobile, tablet, and desktop screens
-- **Dark Mode Support**: Automatically adapts to system color preferences
-- **Modern Styling**: Custom CSS with color variables and smooth transitions
-- **Fast Performance**: Lightweight, no frameworks or heavy dependencies
-- **Clean Navigation**: Sticky navigation bar with smooth scrolling anchors
-- **Professional Layout**: Well-organized sections for easy information access
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --text-primary: #f0f0ee;
+        --text-secondary: #aaa;
+        --text-tertiary: #666;
+        --bg-primary: #1a1a18;
+        --bg-secondary: #222220;
+        --border: rgba(255, 255, 255, 0.1);
+        --purple-light: #26215C;
+        --pink-light: #4B1528;
+        --teal-light: #04342C;
+      }
+    }
 
-## 📁 File Structure
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      color: var(--text-primary);
+      background: var(--bg-primary);
+      line-height: 1.7;
+      max-width: 760px;
+      margin: 0 auto;
+    }
 
-```
-shivansh_awasthi.html
-├── Embedded CSS Styles
-├── Navigation Bar
-├── Hero Section (Introduction)
-├── About Section
-├── Skills Section
-├── Contact Section
-└── Footer
-```
+    /* NAV */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      border-bottom: 0.5px solid var(--border);
+      position: sticky;
+      top: 0;
+      background: var(--bg-primary);
+      z-index: 10;
+    }
 
-## 🎨 Design Elements
+    .nav-logo {
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--purple-mid);
+      text-decoration: none;
+    }
 
-### Color Scheme
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+    }
 
-- **Primary Purple**: `#7F77DD` — Main branding color
-- **Pink Accent**: `#D4537E` — Web development skills
-- **Teal Accent**: `#1D9E75` — Cybersecurity focus
-- **Amber Accent**: `#BA7517` — Tools & interests
-- **Dark/Light Modes**: Full support with CSS variables
+    .nav-links a {
+      font-size: 14px;
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
 
-### Sections
+    .nav-links a:hover {
+      color: var(--purple-mid);
+    }
 
-| Section | Purpose |
-|---------|---------|
-| **Navigation** | Quick links to About, Skills, and Contact |
-| **Hero** | Introduction with avatar and key tags |
-| **About** | Personal bio and professional summary |
-| **Skills** | Categorized skill cards (Web, Cybersecurity, Tools) |
-| **Contact** | Phone and email contact buttons |
-| **Footer** | Copyright and attribution |
+    /* HERO */
+    .hero {
+      padding: 4rem 2rem 3rem;
+      display: flex;
+      align-items: center;
+      gap: 2.5rem;
+      border-bottom: 0.5px solid var(--border);
+    }
 
-## 📱 Responsive Breakpoints
+    .avatar {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      background: var(--purple-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      font-weight: 600;
+      color: var(--purple-dark);
+      flex-shrink: 0;
+      border: 2px solid var(--purple-mid);
+    }
 
-- **Desktop**: Full layout with side-by-side arrangements
-- **Mobile** (< 540px): Optimized for smaller screens with adjusted padding and single-column layouts
+    .hero h1 {
+      font-size: 28px;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
 
-## 🚀 How to Use
+    .hero .subtitle {
+      font-size: 15px;
+      color: var(--text-secondary);
+      margin-bottom: 14px;
+    }
 
-### Opening the File
+    .tags {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
 
-1. **Direct Opening**: Simply double-click `shivansh_awasthi.html` to open in your default browser
-2. **Drag & Drop**: Drag the HTML file onto a browser window
-3. **Via Server**: For the best experience, serve through a local web server:
-   ```bash
-   # Using Python 3
-   python -m http.server 8000
-   
-   # Using Python 2
-   python -m SimpleHTTPServer 8000
-   
-   # Using Node.js (http-server)
-   npx http-server
-   ```
+    .tag {
+      font-size: 12px;
+      padding: 4px 10px;
+      border-radius: var(--radius-md);
+      font-weight: 500;
+    }
 
-### Customization
+    .tag-purple {
+      background: var(--purple-light);
+      color: var(--purple-dark);
+    }
 
-#### Change Colors
-Edit the CSS variables in the `:root` selector (lines 18-38):
-```css
-:root {
-  --purple-mid: #7F77DD;  /* Change brand color */
-  --pink-mid: #D4537E;    /* Change accent colors */
-  /* ... etc */
-}
-```
+    .tag-pink {
+      background: var(--pink-light);
+      color: var(--pink-dark);
+    }
 
-#### Update Personal Information
+    .tag-teal {
+      background: var(--teal-light);
+      color: var(--teal-dark);
+    }
 
-- **Name**: Line 433 in the hero section
-- **Subtitle**: Line 434
-- **Tags**: Lines 436-438
-- **About Text**: Lines 445-450
-- **Contact Number**: Line 527
-- **Email**: Line 536
+    /* SECTIONS */
+    section {
+      padding: 2.5rem 2rem;
+      border-bottom: 0.5px solid var(--border);
+    }
 
-#### Add More Skills
+    .section-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-tertiary);
+      margin-bottom: 1.5rem;
+    }
 
-In the skills section, duplicate a skill-card div and modify:
-```html
-<div class="skill-card">
-  <div class="skill-cat">Category Name</div>
-  <div class="skill-list">
-    <div class="skill-item"><span class="dot dot-purple"></span>Skill Name</div>
+    /* ABOUT */
+    .about-text {
+      font-size: 15px;
+      line-height: 1.9;
+      color: var(--text-secondary);
+      max-width: 560px;
+    }
+
+    /* SKILLS */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 10px;
+    }
+
+    .skill-card {
+      background: var(--bg-secondary);
+      border-radius: var(--radius-lg);
+      padding: 14px 16px;
+      border: 0.5px solid var(--border);
+    }
+
+    .skill-cat {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-tertiary);
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .skill-list {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+
+    .skill-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .dot-purple {
+      background: var(--purple-mid);
+    }
+
+    .dot-pink {
+      background: var(--pink-mid);
+    }
+
+    .dot-teal {
+      background: var(--teal-mid);
+    }
+
+    .dot-amber {
+      background: var(--amber-mid);
+    }
+
+
+    /* CERTIFICATES */
+    .cert-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 12px;
+    }
+
+    .cert-card {
+      border-radius: var(--radius-lg);
+      border: 0.5px solid var(--border);
+      padding: 18px 16px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      text-decoration: none;
+      color: var(--text-primary);
+      transition: transform 0.15s, box-shadow 0.15s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cert-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+    }
+
+    .cert-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+    }
+
+    .cert-card-purple {
+      background: var(--purple-light);
+    }
+
+    .cert-card-purple::before {
+      background: var(--purple-mid);
+    }
+
+    .cert-card-pink {
+      background: var(--pink-light);
+    }
+
+    .cert-card-pink::before {
+      background: var(--pink-mid);
+    }
+
+    .cert-card-teal {
+      background: var(--teal-light);
+    }
+
+    .cert-card-teal::before {
+      background: var(--teal-mid);
+    }
+
+    .cert-emoji {
+      font-size: 26px;
+    }
+
+    .cert-title {
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .cert-meta {
+      font-size: 12px;
+      color: var(--text-tertiary);
+    }
+
+    .cert-dl {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 12px;
+      font-weight: 600;
+      margin-top: 2px;
+    }
+
+    .cert-dl-purple {
+      color: var(--purple-dark);
+    }
+
+    .cert-dl-pink {
+      color: var(--pink-dark);
+    }
+
+    .cert-dl-teal {
+      color: var(--teal-dark);
+    }
+
+    /* CONTACT */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      max-width: 420px;
+    }
+
+    .contact-btn {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 16px;
+      border-radius: var(--radius-lg);
+      border: 0.5px solid var(--border);
+      background: var(--bg-primary);
+      font-size: 14px;
+      color: var(--text-primary);
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.15s;
+    }
+
+    .contact-btn:hover {
+      background: var(--bg-secondary);
+    }
+
+    .contact-btn svg {
+      flex-shrink: 0;
+    }
+
+    /* FOOTER */
+    footer {
+      padding: 1.5rem 2rem;
+      text-align: center;
+      font-size: 13px;
+      color: var(--text-tertiary);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 540px) {
+      .hero {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1.2rem;
+        padding: 2.5rem 1.25rem 2rem;
+      }
+
+      section {
+        padding: 2rem 1.25rem;
+      }
+
+      nav {
+        padding: 0.875rem 1.25rem;
+      }
+
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      h1 {
+        font-size: 22px !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- <form action="https://api.web3forms.com/submit" method="POST">
+  <input type="hidden" name="access_key" value="db15a8bc-bfc8-43ef-a236-2aba75cff34f">
+  <input type="text" name="name" required>
+  <input type="email" name="email" required>
+  <textarea name="message" required></textarea>
+  <button type="submit">Submit Form</button>
+</form> -->
+
+  <nav>
+    <!-- <a class="nav-logo" href="shivansh logo previw" style="display:flex;align-items:center;gap:10px;text-decoration:none;"></a> -->
+    <a class="nav-logo" href="shivansh_logo_preview.png">Shivansh ✦</a>
+    <ul class="nav-links">
+      <li><a href="#about">about</a></li>
+      <li><a href="#skills">skills</a></li>
+      <!-- <li><a href="#certificates">certificates</a></li>
+      <li><a href="#certificates">certificates</a></li> -->
+      <li><a href="#contact">contact</a></li>
+    </ul>
+  </nav>
+
+  <div class="hero">
+    <div class="avatar">SA</div>
+    <div>
+      <h1>Hey, I'm Shivansh Awasthi 👋</h1>
+      <p class="subtitle">· Web Developer · Cybersecurity enthusiast</p>
+      <div class="tags">
+        <span class="tag tag-purple">🎓 Student · Kanpur</span>
+        <span class="tag tag-pink">🔐 Exploring Cybersecurity</span>
+        <span class="tag tag-teal">🚀 Open to internships</span>
+      </div>
+    </div>
   </div>
-</div>
-```
 
-#### Uncomment Features
+  <section id="about">
+    <div class="section-label">about me</div>
+    <p class="about-text">
+      I'm Shivansh Awasthi, its my passion for web development
+      and cybersecurity. I love building things for the web using HTML and CSS.
+      and I'm always curious about how systems can be secured and made more resilient. When I'm not
+      coding, you'll probably find me exploring new tools, reading about ethical hacking, or thinkering
+      with a new side project.
+    </p>
+  </section>
 
-Several features are commented out in the HTML:
-- **Contact Form** (lines 410-416): Requires Web3Forms setup
-- **Certificates Section** (lines 496-521): Uncomment to enable
-- **LinkedIn/GitHub/Twitter Links** (lines 545-558): Uncomment and update URLs
+  <!-- <section id="skills">
+    <div class="section-label">skills</div>
+    <div class="skills-grid">
 
-## 🛠️ Technologies Used
+      <div class="skill-card">
+        <div class="skill-cat">Languages</div>
+        <div class="skill-list">
+          <div class="skill-item"><span class="dot dot-purple"></span>Python</div>
+          <div class="skill-item"><span class="dot dot-purple"></span>JavaScript</div>
+          <div class="skill-item"><span class="dot dot-purple"></span>Java</div>
+        </div>
+      </div> -->
 
-- **HTML5**: Semantic markup
-- **CSS3**: 
-  - CSS Variables for theming
-  - Flexbox for layout
-  - CSS Grid for responsive cards
-  - Media queries for mobile optimization
-- **No JavaScript** required (fully static)
+  <div class="skill-card">
+    <div class="skill-cat">Web</div>
+    <div class="skill-list">
+      <div class="skill-item"><span class="dot dot-pink"></span>HTML</div>
+      <div class="skill-item"><span class="dot dot-pink"></span>CSS</div>
+      <div class="skill-item"><span class="dot dot-pink"></span>Responsive Design</div>
+    </div>
+  </div>
 
-## 🔧 Browser Compatibility
+  <div class="skill-card">
+    <div class="skill-cat">Cybersecurity</div>
+    <div class="skill-list">
+      <!-- <div class="skill-item"><span class="dot dot-teal"></span>Network Security</div> -->
+      <div class="skill-item"><span class="dot dot-teal"></span>Ethical Hacking</div>
+    </div>
+  </div>
 
-| Browser | Support |
-|---------|---------|
-| Chrome/Chromium | ✅ Full support |
-| Firefox | ✅ Full support |
-| Safari | ✅ Full support |
-| Edge | ✅ Full support |
-| IE 11 | ⚠️ Limited (CSS variables not supported) |
+  <div class="skill-card">
+    <div class="skill-cat">Tools & Interests</div>
+    <div class="skill-list">
+      <!-- <div class="skill-item"><span class="dot dot-amber"></span>Git / GitHub</div> -->
+      <div class="skill-item"><span class="dot dot-amber"></span>VS Code</div>
+      <div class="skill-item"><span class="dot dot-amber"></span>Open Source</div>
+    </div>
+  </div>
 
-## 💡 Tips for Customization
+  </div>
+  </section>
 
-1. **Font**: Change system font stack in `body` selector (line 55)
-2. **Max Width**: Adjust `max-width: 760px` in body for different content widths
-3. **Spacing**: Modify `padding` values in section styles
-4. **Radius**: Change `--radius-md` and `--radius-lg` for rounder/sharper corners
-5. **Hover Effects**: Modify transition effects in `.cert-card:hover` (line 278)
+  <!-- <section id="certificates">
+    <div class="section-label">certificates</div>
+    <div class="cert-grid">
 
-## 📞 Contact Information
+      <a class="cert-card cert-card-purple" href="Certificate_Python.pdf" download>
+        <div class="cert-emoji">🐍</div>
+        <div class="cert-title">Python Programming</div>
+        <div class="cert-meta">Academy of Excellence · June 2026</div>
+        <span class="cert-dl cert-dl-purple">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download Certificate
+        </span>
+      </a> -->
 
-- **Phone**: +91 7905191774
-- **Email**: shivanshawasthi51@gmailcom (note: appears to have typo in email)
+  <!-- <a class="cert-card cert-card-teal" href="Certificate_Java.pdf" download>
+        <div class="cert-emoji">☕</div>
+        <div class="cert-title">Java Programming</div>
+        <div class="cert-meta">Academy of Excellence · June 2026</div>
+        <span class="cert-dl cert-dl-teal">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download Certificate
+        </span>
+      </a> -->
 
-## 🎯 Current Skills
+  <!-- </div>
+  </section> -->
 
-- **Web**: HTML, CSS, Responsive Design
-- **Cybersecurity**: Ethical Hacking
-- **Tools**: VS Code, Open Source
+  <section id="contact">
+    <div class="section-label">say hello</div>
+    <div class="contact-grid">
 
-## 🔗 Notes
+      <a class="contact-btn" href="tel:+917905191774">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="1.8"
+          stroke-linecap="round" stroke-linejoin="round">
+          <path
+            d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.64 3.38 2 2 0 0 1 3.62 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.6a16 16 0 0 0 6.29 6.29l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
+        </svg>
+        +91 7905191774
+      </a>
 
-- Several contact links are commented out (LinkedIn, GitHub, Twitter) — uncomment and update as needed
-- Email link appears to have a typo (missing dot before 'com')
-- Certificate section is available but commented out
-- Form integration with Web3Forms is commented out but configured
+      <a class="contact-btn" href="mailto:shivanshawasthi51@gmailcom">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#7F77DD" stroke-width="1.8"
+          stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="4" width="20" height="16" rx="2" />
+          <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+        </svg>
+        Email me
+      </a>
 
-## 📄 License
+      <!-- <a class="contact-btn" href="https://linkedin.com/in/yourname" target="_blank" rel="noopener">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#378ADD" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        LinkedIn
+      </a> -->
 
-This is a personal portfolio. Feel free to use as a template for your own portfolio website.
+      <!-- <a class="contact-btn" href="https://github.com/yourname" target="_blank" rel="noopener">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D4537E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+        GitHub
+      </a>
 
----
+      <a class="contact-btn" href="https://twitter.com/yourname" target="_blank" rel="noopener">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/></svg>
+        Twitter
+      </a> -->
 
-**Built with ♥ · 2026**
+    </div>
+  </section>
+
+  <footer>
+    built with ♥ · Shivansh Awasthi · 2026
+  </footer>
+
+</body>
+
+</html>
