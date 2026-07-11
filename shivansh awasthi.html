@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shivansh Awasthi — Student & Developer</title>
+
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --purple-light: #EEEDFE;
+      --purple-mid: #7F77DD;
+      --purple-dark: #3C3489;
+      --pink-light: #FBEAF0;
+      --pink-mid: #D4537E;
+      --pink-dark: #72243E;
+      --teal-light: #E1F5EE;
+      --teal-mid: #1D9E75;
+      --teal-dark: #085041;
+      --amber-mid: #BA7517;
+      --blue-mid: #378ADD;
+      --text-primary: #1a1a1a;
+      --text-secondary: #555;
+      --text-tertiary: #999;
+      --bg-primary: #ffffff;
+      --bg-secondary: #f7f7f5;
+      --border: rgba(0, 0, 0, 0.1);
+      --radius-md: 8px;
+      --radius-lg: 12px;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --text-primary: #f0f0ee;
+        --text-secondary: #aaa;
+        --text-tertiary: #666;
+        --bg-primary: #1a1a18;
+        --bg-secondary: #222220;
+        --border: rgba(255, 255, 255, 0.1);
+        --purple-light: #26215C;
+        --pink-light: #4B1528;
+        --teal-light: #04342C;
+      }
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      color: var(--text-primary);
+      background: var(--bg-primary);
+      line-height: 1.7;
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    /* NAV */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      border-bottom: 0.5px solid var(--border);
+      position: sticky;
+      top: 0;
+      background: var(--bg-primary);
+      z-index: 10;
+    }
+
+    .nav-logo {
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--purple-mid);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 14px;
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--purple-mid);
+    }
+
+    /* HERO */
+    .hero {
+      padding: 4rem 2rem 3rem;
+      display: flex;
+      align-items: center;
+      gap: 2.5rem;
+      border-bottom: 0.5px solid var(--border);
+    }
+
+    .avatar {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      background: var(--purple-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      font-weight: 600;
+      color: var(--purple-dark);
+      flex-shrink: 0;
+      border: 2px solid var(--purple-mid);
+    }
+
+    .hero h1 {
+      font-size: 28px;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .hero .subtitle {
+      font-size: 15px;
+      color: var(--text-secondary);
+      margin-bottom: 14px;
+    }
+
+    .tags {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .tag {
+      font-size: 12px;
+      padding: 4px 10px;
+      border-radius: var(--radius-md);
+      font-weight: 500;
+    }
+
+    .tag-purple {
+      background: var(--purple-light);
+      color: var(--purple-dark);
+    }
+
+    .tag-pink {
+      background: var(--pink-light);
+      color: var(--pink-dark);
+    }
+
+    .tag-teal {
+      background: var(--teal-light);
+      color: var(--teal-dark);
+    }
+
+    /* SECTIONS */
+    section {
+      padding: 2.5rem 2rem;
+      border-bottom: 0.5px solid var(--border);
+    }
+
+    .section-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-tertiary);
+      margin-bottom: 1.5rem;
+    }
+
+    /* ABOUT */
+    .about-text {
+      font-size: 15px;
+      line-height: 1.9;
+      color: var(--text-secondary);
+      max-width: 560px;
+    }
+
+    /* SKILLS */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 10px;
+    }
+
+    .skill-card {
+      background: var(--bg-secondary);
+      border-radius: var(--radius-lg);
+      padding: 14px 16px;
+      border: 0.5px solid var(--border);
+    }
+
+    .skill-cat {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-tertiary);
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .skill-list {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+
+    .skill-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .dot-purple {
+      background: var(--purple-mid);
+    }
+
+    .dot-pink {
+      background: var(--pink-mid);
+    }
+
+    .dot-teal {
+      background: var(--teal-mid);
+    }
+
+    .dot-amber {
+      background: var(--amber-mid);
+    }
+
+
+    /* CERTIFICATES */
+    .cert-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 12px;
+    }
+
+    .cert-card {
+      border-radius: var(--radius-lg);
+      border: 0.5px solid var(--border);
+      padding: 18px 16px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      text-decoration: none;
+      color: var(--text-primary);
+      transition: transform 0.15s, box-shadow 0.15s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cert-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+    }
+
+    .cert-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+    }
+
+    .cert-card-purple {
+      background: var(--purple-light);
+    }
+
+    .cert-card-purple::before {
+      background: var(--purple-mid);
+    }
+
+    .cert-card-pink {
+      background: var(--pink-light);
+    }
+
+    .cert-card-pink::before {
+      background: var(--pink-mid);
+    }
+
+    .cert-card-teal {
+      background: var(--teal-light);
+    }
+
+    .cert-card-teal::before {
+      background: var(--teal-mid);
+    }
+
+    .cert-emoji {
+      font-size: 26px;
+    }
+
+    .cert-title {
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .cert-meta {
+      font-size: 12px;
+      color: var(--text-tertiary);
+    }
+
+    .cert-dl {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 12px;
+      font-weight: 600;
+      margin-top: 2px;
+    }
+
+    .cert-dl-purple {
+      color: var(--purple-dark);
+    }
+
+    .cert-dl-pink {
+      color: var(--pink-dark);
+    }
+
+    .cert-dl-teal {
+      color: var(--teal-dark);
+    }
+
+    /* CONTACT */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      max-width: 420px;
+    }
+
+    .contact-btn {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 16px;
+      border-radius: var(--radius-lg);
+      border: 0.5px solid var(--border);
+      background: var(--bg-primary);
+      font-size: 14px;
+      color: var(--text-primary);
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.15s;
+    }
+
+    .contact-btn:hover {
+      background: var(--bg-secondary);
+    }
+
+    .contact-btn svg {
+      flex-shrink: 0;
+    }
+
+    /* FOOTER */
+    footer {
+      padding: 1.5rem 2rem;
+      text-align: center;
+      font-size: 13px;
+      color: var(--text-tertiary);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 540px) {
+      .hero {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1.2rem;
+        padding: 2.5rem 1.25rem 2rem;
+      }
+
+      section {
+        padding: 2rem 1.25rem;
+      }
+
+      nav {
+        padding: 0.875rem 1.25rem;
+      }
+
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      h1 {
+        font-size: 22px !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- <form action="https://api.web3forms.com/submit" method="POST">
+  <input type="hidden" name="access_key" value="db15a8bc-bfc8-43ef-a236-2aba75cff34f">
+  <input type="text" name="name" required>
+  <input type="email" name="email" required>
+  <textarea name="message" required></textarea>
+  <button type="submit">Submit Form</button>
+</form> -->
+
+  <nav>
+    <!-- <a class="nav-logo" href="shivansh logo previw" style="display:flex;align-items:center;gap:10px;text-decoration:none;"></a> -->
+    <a class="nav-logo" href="shivansh_logo_preview.png">Shivansh ✦</a>
+    <ul class="nav-links">
+      <li><a href="#about">about</a></li>
+      <li><a href="#skills">skills</a></li>
+      <!-- <li><a href="#certificates">certificates</a></li>
+      <li><a href="#certificates">certificates</a></li> -->
+      <li><a href="#contact">contact</a></li>
+    </ul>
+  </nav>
+
+  <div class="hero">
+    <div class="avatar">SA</div>
+    <div>
+      <h1>Hey, I'm Shivansh Awasthi 👋</h1>
+      <p class="subtitle">· Web Developer · Cybersecurity enthusiast</p>
+      <div class="tags">
+        <span class="tag tag-purple">🎓 Student · Kanpur</span>
+        <span class="tag tag-pink">🔐 Exploring Cybersecurity</span>
+        <span class="tag tag-teal">🚀 Open to internships</span>
+      </div>
+    </div>
+  </div>
+
+  <section id="about">
+    <div class="section-label">about me</div>
+    <p class="about-text">
+      I'm Shivansh Awasthi, its my passion for web development
+      and cybersecurity. I love building things for the web using HTML and CSS.
+      and I'm always curious about how systems can be secured and made more resilient. When I'm not
+      coding, you'll probably find me exploring new tools, reading about ethical hacking, or thinkering
+      with a new side project.
+    </p>
+  </section>
+
+  <!-- <section id="skills">
+    <div class="section-label">skills</div>
+    <div class="skills-grid">
+
+      <div class="skill-card">
+        <div class="skill-cat">Languages</div>
+        <div class="skill-list">
+          <div class="skill-item"><span class="dot dot-purple"></span>Python</div>
+          <div class="skill-item"><span class="dot dot-purple"></span>JavaScript</div>
+          <div class="skill-item"><span class="dot dot-purple"></span>Java</div>
+        </div>
+      </div> -->
+
+  <div class="skill-card">
+    <div class="skill-cat">Web</div>
+    <div class="skill-list">
+      <div class="skill-item"><span class="dot dot-pink"></span>HTML</div>
+      <div class="skill-item"><span class="dot dot-pink"></span>CSS</div>
+      <div class="skill-item"><span class="dot dot-pink"></span>Responsive Design</div>
+    </div>
+  </div>
+
+  <div class="skill-card">
+    <div class="skill-cat">Cybersecurity</div>
+    <div class="skill-list">
+      <!-- <div class="skill-item"><span class="dot dot-teal"></span>Network Security</div> -->
+      <div class="skill-item"><span class="dot dot-teal"></span>Ethical Hacking</div>
+    </div>
+  </div>
+
+  <div class="skill-card">
+    <div class="skill-cat">Tools & Interests</div>
+    <div class="skill-list">
+      <!-- <div class="skill-item"><span class="dot dot-amber"></span>Git / GitHub</div> -->
+      <div class="skill-item"><span class="dot dot-amber"></span>VS Code</div>
+      <div class="skill-item"><span class="dot dot-amber"></span>Open Source</div>
+    </div>
+  </div>
+
+  </div>
+  </section>
+
+  <!-- <section id="certificates">
+    <div class="section-label">certificates</div>
+    <div class="cert-grid">
+
+      <a class="cert-card cert-card-purple" href="Certificate_Python.pdf" download>
+        <div class="cert-emoji">🐍</div>
+        <div class="cert-title">Python Programming</div>
+        <div class="cert-meta">Academy of Excellence · June 2026</div>
+        <span class="cert-dl cert-dl-purple">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download Certificate
+        </span>
+      </a> -->
+
+  <!-- <a class="cert-card cert-card-teal" href="Certificate_Java.pdf" download>
+        <div class="cert-emoji">☕</div>
+        <div class="cert-title">Java Programming</div>
+        <div class="cert-meta">Academy of Excellence · June 2026</div>
+        <span class="cert-dl cert-dl-teal">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download Certificate
+        </span>
+      </a> -->
+
+  <!-- </div>
+  </section> -->
+
+  <section id="contact">
+    <div class="section-label">say hello</div>
+    <div class="contact-grid">
+
+      <a class="contact-btn" href="tel:+917905191774">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="1.8"
+          stroke-linecap="round" stroke-linejoin="round">
+          <path
+            d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.64 3.38 2 2 0 0 1 3.62 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.6a16 16 0 0 0 6.29 6.29l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
+        </svg>
+        +91 7905191774
+      </a>
+
+      <a class="contact-btn" href="mailto:shivanshawasthi51@gmailcom">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#7F77DD" stroke-width="1.8"
+          stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="4" width="20" height="16" rx="2" />
+          <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+        </svg>
+        Email me
+      </a>
+
+      <!-- <a class="contact-btn" href="https://linkedin.com/in/yourname" target="_blank" rel="noopener">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#378ADD" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        LinkedIn
+      </a> -->
+
+      <!-- <a class="contact-btn" href="https://github.com/yourname" target="_blank" rel="noopener">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D4537E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+        GitHub
+      </a>
+
+      <a class="contact-btn" href="https://twitter.com/yourname" target="_blank" rel="noopener">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1D9E75" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/></svg>
+        Twitter
+      </a> -->
+
+    </div>
+  </section>
+
+  <footer>
+    built with ♥ · Shivansh Awasthi · 2026
+  </footer>
+
+</body>
+
+</html>
